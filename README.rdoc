@@ -1,0 +1,23 @@
+== MapsByText
+
+This product allows users to get directions from Google Maps without using the internet.  Users text where they are, and where they want to go to our number, and turn by turn directions are returned.
+For users with data caps, or without smartphones, this product will be invaluable.
+
+The format of the interaction will be as follows:
+
+"Walking from 24 Willie Mays Plaza, San Francisco, CA 94107 to 850 Bush St, San Francisco, CA 94108"
+
+Features (in order of implementation):
+
+* Supports Walking and Driving only.
+
+* Directions of any length will be texted to the user, with each text being a maximum =~ 1500 characters
+
+
+Next features:
+
+* Support error handling with a response text
+
+* Add help menu giving detailed instructions on how to Useable
+
+* Implement custom location saving (Home is 123 Front Street,  Work is 445 Market Street, ect.)
