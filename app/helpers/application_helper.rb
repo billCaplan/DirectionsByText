@@ -14,10 +14,11 @@ module ApplicationHelper
   def getDirections(breakdown)
     travelMode = ""
 
-    case breakdown[0].downcase()
-    when "walking" || "walk"
+
+    case breakdown[0].downcase.strip()
+    when "walking", "walk"
       travelMode = "walking"
-    when "driving" || "drive"
+    when "driving", "drive"
       travelMode = "driving"
     else
       travelMode = "walking"
@@ -61,6 +62,8 @@ module ApplicationHelper
 
     mode = mode
     apiKey = ENV["google_maps_key"]
+
+
     url = "https://maps.googleapis.com/maps/api/directions/json?origin=#{origin}&destination=#{destination}&mode=#{mode}&key=#{apiKey}"
 
     response = HTTParty.get(url)
@@ -82,7 +85,13 @@ module ApplicationHelper
       finalString[iterator] += "#{step['html_instructions']} \n"
       finalString[iterator] += "(#{step['duration']['text']}, #{step['distance']['text']} )\n"
       finalString[iterator] += "\n"
+
+      finalString[iterator].gsub!(/(Destinatio)\w/, " Destination")
+
     end
+
+    finalString[iterator] += "Total Time: #{response['routes'][0]['legs'][0]['duration']['text']}, #{response['routes'][0]['legs'][0]['distance']['text']}  \n"
+
 
 
     finalString.each_with_index do |piece, idx|
