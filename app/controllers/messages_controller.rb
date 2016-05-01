@@ -41,10 +41,10 @@ include ApplicationHelper
  private
 
  def boot_twilio
-   account_sid = Rails.application.secrets.twilio_sid
+   account_sid = ENV["twilio_sid"]
 
 
-   auth_token = Rails.application.secrets.twilio_token
+   auth_token = ENV["twilio_token"]
 
    @client = Twilio::REST::Client.new account_sid, auth_token
  end

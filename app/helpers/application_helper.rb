@@ -60,7 +60,7 @@ module ApplicationHelper
     end
 
     mode = mode
-    apiKey = Rails.application.secrets.google_maps_key
+    apiKey = ENV["google_maps_key"]
     url = "https://maps.googleapis.com/maps/api/directions/json?origin=#{origin}&destination=#{destination}&mode=#{mode}&key=#{apiKey}"
 
     response = HTTParty.get(url)
